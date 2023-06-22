@@ -19,11 +19,9 @@ public class Main {
         int deposit = 15000;
         int target = 2_459_000;
         int i = 0;
-        while (total <= target) {
+        while (total < target) {
             total += deposit;
             i++;
-            // Вариант вывода за каждый месяц:
-            //System.out.println("Месяц " + i + ", сумма накопления равна " + total + " рублей");
         }
         System.out.println("Месяц " + i + ", сумма накопления равна " + total + " рублей");
     }
@@ -46,13 +44,17 @@ public class Main {
     public static void task3() {
         System.out.println("Задача 3:");
         int population = 12_000_000;
-        int birthPopulation = population / 1000 * 17;
-        int mortalityPopulation = population / 1000 * 8;
+        int birth = 17;
+        int mortality = 8;
+        int birthPopulation;
+        int mortalityPopulation;
         int yearY = 2020;
         int yearY2 = 2030;
 
         while (yearY <= yearY2) {
             System.out.println("Год " + yearY + ", численность населения составляет " + population);
+            birthPopulation = population / 1000 * birth;
+            mortalityPopulation = population / 1000 * mortality;
             population = population + (birthPopulation - mortalityPopulation);
             yearY++;
         }
@@ -64,13 +66,13 @@ public class Main {
         int percent = 7;
         int finalAmount = 12_000_000;
         int total = 0;
-        int i = 0;
+        int moth = 0;
 
-        while (total <= finalAmount) {
+        while (total < finalAmount) {
             total = total + total * percent / 100;
             total = total + depositAmount;
-            i++;
-            System.out.println("Месяц: " + i + " сумма накоплений - " + total);
+            moth++;
+            System.out.println("Месяц: " + moth + " сумма накоплений - " + total);
         }
     }
 
@@ -80,14 +82,14 @@ public class Main {
         int percent = 7;
         int finalAmount = 12_000_000;
         int total = 0;
-        int i = 0;
+        int moth = 0;
 
-        while (total <= finalAmount) {
+        while (total < finalAmount) {
             total = total + total * percent / 100;
             total = total + depositAmount;
-            i++;
-            if (i % 6 == 0) {
-                System.out.println("Месяц: " + i + " сумма накоплений - " + total);
+            moth++;
+            if (moth % 6 == 0) {
+                System.out.println("Месяц: " + moth + " сумма накоплений - " + total);
             }
         }
     }
@@ -96,17 +98,16 @@ public class Main {
         System.out.println("Задача 6:");
         int depositAmount = 15000;
         int percent = 7;
-        //int finalAmount = 12_000_000;
         int total = 0;
-        int i = 0;
+        int moth = 0;
         int nineYears = 108;
 
-        while (i <= nineYears) {
+        while (moth <= nineYears) {
             total = total + total * percent / 100;
             total = total + depositAmount;
-            i++;
-            if (i % 6 == 0) {
-                System.out.println("Месяц: " + i + " сумма накоплений - " + total);
+            moth++;
+            if (moth % 6 == 0) {
+                System.out.println("Месяц: " + moth + " сумма накоплений - " + total);
             }
         }
     }
@@ -128,14 +129,15 @@ public class Main {
         int initialPeriod = currentYear - 200;
         int endPeriod = currentYear + 100;
 
-        for (int year = initialPeriod; year < endPeriod; year++) {
-            if ((year - zeroYear) % 79 == 0) {
-                if (year <= currentYear) {
-                    System.out.println("За последние  200 лет комета появилась в: " + year + " году");
-                } else if (year > currentYear) {
-                    System.out.println("В следующие 100 лет комета появилась в: " + year + " году");
+        while (zeroYear < endPeriod) {
+            if (zeroYear > initialPeriod && zeroYear % 79 == 0) {
+                if (zeroYear <= currentYear) {
+                    System.out.println("За последние  200 лет комета появилась в: " + zeroYear + " году");
+                } else if (zeroYear > currentYear) {
+                    System.out.println("В следующие 100 лет комета появилась в: " + zeroYear + " году");
                 }
             }
+            zeroYear += 79;
         }
     }
 }
